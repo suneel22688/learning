@@ -1,0 +1,25 @@
+name: Build, Test, and Package
+
+on:
+  push:
+    branches:
+      - master # Modify this if your default branch has a different name
+
+jobs:
+  build-test-package:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '8' # Adjust the Java version if necessary
+
+      - name: Build and test
+        run: mvn clean install # Replace with your build and test command or script
+
+      - name: Package
+        run: mvn package # Replace with your package command or script
